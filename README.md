@@ -3,6 +3,18 @@
 
 여러 지역을 여행다니며 세력을 키워서 일인자가 되는 게임
 
+환경
+----
+
+#### 가상 환경
+
+    $ mkvirtualenv vegabonds
+
+#### 모듈 설치
+
+    $ pip install -r requirements.txt
+
+
 리서치
 ------
 
