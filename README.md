@@ -6,6 +6,12 @@
 환경
 ----
 
+#### OS X 준비
+
+psd 로딩 환경 준비
+
+    $ brew install libtiff libjpeg webp little-cms2
+
 #### 가상 환경
 
     $ mkvirtualenv vegabonds
