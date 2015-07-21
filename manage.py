@@ -1,6 +1,6 @@
 from psd_tools import PSDImage
-from yaml import dump as yaml_dump
 import os
+import json
 
 
 def make_scene(psdPath, resDirPath):
@@ -8,7 +8,7 @@ def make_scene(psdPath, resDirPath):
     mapName = os.path.splitext(psdFileName)[0]
     mapDirPath = os.path.join(resDirPath, mapName)
     imageDirPath = os.path.join(mapDirPath, 'images')
-    sceneFilePath = os.path.join(mapDirPath, 'scene.yaml')
+    sceneFilePath = os.path.join(mapDirPath, 'scene.json')
 
     if not os.access(imageDirPath, os.R_OK):
         os.makedirs(imageDirPath)
@@ -34,6 +34,6 @@ def make_scene(psdPath, resDirPath):
             image.save('{0}/{1}.png'.format(imageDirPath, layer.name))
 
     sceneDict = dict(layers=layerInfos)
-    open(sceneFilePath, 'w').write(yaml_dump(sceneDict))
+    open(sceneFilePath, 'w').write(json.dumps(sceneDict, indent=4))
 
 make_scene('./graphics/maps/china.psd', './resources/maps')
