@@ -5,6 +5,8 @@ from kivy.uix.image import Image
 from kivy.uix.label import Label
 from kivy.core.window import Window
 
+from random import random 
+
 import json
 import os
 
@@ -38,7 +40,9 @@ class VegabondsView(FloatLayout):
             layer_size = (layer_dict['w'], layer_dict['h'])
             layer_name = layer_dict['name'] 
             layer_path = os.path.join('resources', 'maps', map_name, 'images', layer_name + '.png')
-            layer_image = Image(source=layer_path, pos=layer_pos, size=layer_size, pos_hint={}, size_hint=(None, None))
+            
+            layer_color = [random(), random(), random(), 1]
+            layer_image = Image(source=layer_path, pos=layer_pos, size=layer_size, pos_hint={}, size_hint=(None, None), color=layer_color)
             
             layer_label = Label(text="[color=000000]"+layer_name+"[/color]", pos=layer_pos, pos_hint={}, size_hint=(None, None), markup=True)
             self.add_widget(layer_image)
