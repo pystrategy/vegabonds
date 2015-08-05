@@ -27,8 +27,7 @@ class VegabondsView(FloatLayout):
     def __load_map_scene(self, map_name):
 
         scene_path = os.path.join('resources', 'maps', map_name, 'scene.json')
-        scene_data = open(scene_path, 'rb').read() 
-        scene_dict = json.loads(scene_data)
+        scene_dict = json.load(open(scene_path))
 
         scene_width = 1080
         scene_height = 800
