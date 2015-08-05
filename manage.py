@@ -23,7 +23,7 @@ def make_scene(psdPath, resDirPath):
         layerInfo = dict(
             name=layer.name.encode('utf8'),
             x=layer.bbox.x1,
-            y=layer.bbox.y1,
+            y=psd.header.height - layer.bbox.y2,
             w=layer.bbox.width,
             h=layer.bbox.height)
 
@@ -33,7 +33,7 @@ def make_scene(psdPath, resDirPath):
             image = layer.as_PIL()
             image.save('{0}/{1}.png'.format(imageDirPath, layer.name))
 
-    sceneDict = dict(layers=layerInfos)
+    sceneDict = dict(layers=layerInfos, header=dict(width=psd.header.width, height=psd.header.height))
     open(sceneFilePath, 'w').write(json.dumps(sceneDict, indent=4))
 
 make_scene('./graphics/maps/china.psd', './resources/maps')
