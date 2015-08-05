@@ -36,7 +36,7 @@ class VegabondsView(FloatLayout):
         first_layer_dict = layer_list[0]
         pivot_pos = (first_layer_dict['x'], first_layer_dict['y'])
         for layer_dict in reversed(layer_list):
-            layer_pos = (layer_dict['x'] - pivot_pos[0], scene_height - (layer_dict['y'] + layer_dict['h'] + pivot_pos[1]))
+            layer_pos = (layer_dict['x'] - pivot_pos[0], layer_dict['y'] - pivot_pos[1])
             layer_size = (layer_dict['w'], layer_dict['h'])
             layer_name = layer_dict['name'] 
             layer_path = os.path.join('resources', 'maps', map_name, 'images', layer_name + '.png')
